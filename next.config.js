@@ -1,4 +1,4 @@
 module.exports = {
-  output: 'standalone',
-   
+  output: 'export',
+  trailingSlash: true,
 }

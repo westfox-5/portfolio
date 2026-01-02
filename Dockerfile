@@ -1,11 +1,5 @@
 # syntax=docker/dockerfile:1
 
-# Comments are provided throughout this file to help you get started.
-# If you need more help, visit the Dockerfile reference guide at
-# https://docs.docker.com/go/dockerfile-reference/
-
-# Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
-
 ARG NODE_VERSION=22.11.0
 
 ################################################################################
@@ -26,7 +20,7 @@ FROM base AS deps
 RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=bind,source=package-lock.json,target=package-lock.json \
     --mount=type=cache,target=/root/.npm \
-    npm ci
+    npm ci --only=production
 
 ################################################################################
 # Create a stage for building the application.
@@ -45,38 +39,17 @@ COPY . .
 RUN npm run build
 
 ################################################################################
-# Create a new stage to run the application with minimal runtime dependencies
-# where the necessary files are copied from the build stage.
-FROM base AS final
+# Use Nginx to serve the static files
+FROM nginx:alpine AS final
 
-# Use production node environment by default.
-ENV NODE_ENV=production
+# Copy the built static files from the builder stage
+COPY --from=builder /app/out /usr/share/nginx/html
 
-# Run the application as a non-root user.
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+# Copy custom nginx configuration if needed
+# COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copy package.json so that package manager commands can be used.
-COPY package.json .
+# Expose port 80
+EXPOSE 80
 
-COPY --from=builder /app/public ./public
-
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-
-USER nextjs
-
-# Expose the port that the application listens on.
-EXPOSE 3000
-
-ENV PORT=3000
-
-# server.js is created by next build from the standalone output
-# https://nextjs.org/docs/pages/api-reference/next-config-js/output
-ENV HOSTNAME="0.0.0.0"
-
-# Run the application.
-CMD ["node", "server.js"]
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]

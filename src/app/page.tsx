@@ -11,7 +11,6 @@ const Projects = dynamic(() => import("../components/sections/Projects"), { ssr:
 const Experience = dynamic(() => import("../components/sections/Experience"), { ssr: false });
 const Education = dynamic(() => import("../components/sections/Education"), { ssr: false });
 const Contact = dynamic(() => import("../components/sections/Contact"), { ssr: false });
-const Ops = dynamic(() => import("../components/sections/Ops"), { ssr: false });
 
 const Home = () => {
 
@@ -54,9 +53,6 @@ const Home = () => {
         <Separator />
 
         <Contact />
-        <Separator />
-
-        <Ops />
       </div></>
   );
 };
