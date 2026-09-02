@@ -10,7 +10,18 @@ export default {
     extend: {
       colors: {
         background: "var(--background)",
+        surface: "var(--surface)",
+        "surface-hover": "var(--surface-hover)",
         foreground: "var(--foreground)",
+        muted: "var(--muted)",
+        border: "var(--border)",
+        primary: "rgb(var(--primary-rgb) / <alpha-value>)",
+        accent: "rgb(var(--accent-rgb) / <alpha-value>)",
+      },
+      boxShadow: {
+        card: "var(--shadow-card)",
+        "card-hover": "var(--shadow-card-hover)",
+        glow: "var(--shadow-glow)",
       },
     },
   },

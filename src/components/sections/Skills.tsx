@@ -1,64 +1,81 @@
 "use client"
 
+import { BadgeCheck, Code2, Database, LayoutTemplate, Server, Award } from "lucide-react";
+import SectionHeading from "../SectionHeading";
+import Reveal from "../Reveal";
 
-
-
-
-const hardSkills = [
-	'Java (SE/EE, Spring Boot, Spring Batch)',
-	'SQL (Transact-SQL, PL/SQL)',
-	'Apache Kafka',
-	'Message Queues',
-	'Docker',
-	'Kubernetes',
-	'Helm',
-	'GitLab CI/CD',
-	'Oracle',
-	'MongoDB',
-	'Angular',
-	'React',
-	'Next.js',
-	'TypeScript / JavaScript',
-	'Python',
-	'Unix/Linux',
-	'Networking',
-	'System architecture',
+const skillGroups = [
+  {
+    icon: Code2,
+    title: "Backend & Languages",
+    skills: ["Java (SE/EE, Spring Boot, Spring Batch)", "SQL (Transact-SQL, PL/SQL)", "TypeScript / JavaScript", "Python"],
+  },
+  {
+    icon: Server,
+    title: "DevOps & Infrastructure",
+    skills: ["Docker", "Kubernetes", "Helm", "GitLab CI/CD", "Unix/Linux", "Networking"],
+  },
+  {
+    icon: Database,
+    title: "Messaging & Data",
+    skills: ["Apache Kafka", "Message Queues", "Oracle", "MongoDB"],
+  },
+  {
+    icon: LayoutTemplate,
+    title: "Frontend & Architecture",
+    skills: ["Angular", "React", "Next.js", "System architecture"],
+  },
 ];
 
-const softSkills = ['Problem solving', 'Attention to detail', 'Mentoring & knowledge sharing'];
-
-import { BadgeCheck } from "lucide-react";
+const softSkills = ["Problem solving", "Attention to detail", "Mentoring & knowledge sharing"];
 
 const Skills = () => (
-	<>
-		<section id="skills" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
-			<h2 className="text-3xl lg:text-5xl font-bold mb-6 flex items-center gap-3">
-				<BadgeCheck className="w-8 h-8 text-[var(--foreground-accent)]" />
-				Skills
-			</h2>
-			<div className="px-2 md:px-8">
-				<div className="flex flex-wrap gap-3 text-base lg:text-xl">
-					{hardSkills.map((skill) => (
-						<span key={skill} className="px-3 py-1 rounded-md bg-[var(--foreground)] text-[var(--background)]">
-							{skill}
-						</span>
-					))}
-				</div>
-				<div className="mt-6 flex flex-wrap gap-3 text-base lg:text-xl opacity-90">
-					{softSkills.map((soft) => (
-						<span key={soft} className="mr-3 py-1 rounded-md border border-[var(--foreground-accent)]">
-							{soft}
-						</span>
-					))}
-				</div>
-				<div className="mt-6 text-base lg:text-xl opacity-90">
-					Certifications: OCP 1Z0-815, 1Z0-819 · Java SE 11 Developer
-				</div>
-			</div>
-		</section>
-	</>
+  <section id="skills" className="container-page section-pad">
+    <SectionHeading icon={BadgeCheck} eyebrow="Skills" title="What I work with" />
+
+    <div className="grid sm:grid-cols-2 gap-5">
+      {skillGroups.map(({ icon: Icon, title, skills }, i) => (
+        <Reveal key={title} delay={i * 0.06} className="card card-hover p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="icon-tile w-10 h-10">
+              <Icon className="w-5 h-5" />
+            </span>
+            <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {skills.map((skill) => (
+              <span key={skill} className="tag-chip">
+                {skill}
+              </span>
+            ))}
+          </div>
+        </Reveal>
+      ))}
+    </div>
+
+    <Reveal delay={0.28} className="mt-6 card p-6 flex flex-col md:flex-row md:items-center gap-6">
+      <div className="flex-1">
+        <h3 className="text-sm font-semibold uppercase tracking-wider text-muted mb-3">Soft skills</h3>
+        <div className="flex flex-wrap gap-2">
+          {softSkills.map((soft) => (
+            <span key={soft} className="tag-chip">
+              {soft}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className="hidden md:block w-px h-12 bg-border" />
+      <div className="flex items-center gap-3">
+        <span className="icon-tile w-11 h-11 shrink-0">
+          <Award className="w-5 h-5" />
+        </span>
+        <div>
+          <div className="font-semibold text-foreground">Oracle Certified Professional</div>
+          <div className="text-sm text-muted">1Z0-815, 1Z0-819 &middot; Java SE 11 Developer</div>
+        </div>
+      </div>
+    </Reveal>
+  </section>
 );
 
 export default Skills;
-
-

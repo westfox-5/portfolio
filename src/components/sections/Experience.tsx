@@ -1,87 +1,91 @@
 "use client"
 
-import { Briefcase } from "lucide-react";
+import { Briefcase, Building2 } from "lucide-react";
+import SectionHeading from "../SectionHeading";
+import Reveal from "../Reveal";
+
+const experience = [
+  {
+    role: "Software Engineer",
+    company: "T.A.S. s.p.a",
+    meta: "Remote",
+    period: "2024 — Present",
+    bullets: [
+      "Senior Java EE developer in a SCRUM team, in a multi-team environment.",
+      "Financial applications for Instant Payments bank transfers, along with shared common libraries maintenance.",
+      "Spring Boot, Spring Batch, MQs, Apache Kafka, Docker, Kubernetes deployments, Helm, GitLab pipelines.",
+    ],
+  },
+  {
+    role: "Java Developer, Team Leader",
+    company: "Technology Reply",
+    period: "2022 — 2024",
+    bullets: [
+      "Technical team leader of a group of 4 people.",
+      "Analysis and design of data models; meetings with the business, definition of testbooks and active participation in customer UATs.",
+      "Application deployment and maintenance, management of ticketing system and ticket lifecycle.",
+    ],
+  },
+  {
+    role: "Analyst Java Developer",
+    company: "Technology Reply",
+    period: "2021 — 2022",
+    bullets: [
+      "Design of data models based on business requirements. Participation in both technical and functional meetings.",
+      "Improved system stability, reducing incident tickets by 15%.",
+    ],
+  },
+  {
+    role: "Java Developer",
+    company: "Technology Reply",
+    period: "2019 — 2021",
+    bullets: [
+      "Development and maintenance of the P.L.M. (Product Lifecycle Management) software for a well-known Italian fashion company.",
+    ],
+  },
+  {
+    role: "University Internship",
+    company: "Ca' Foscari University of Venice",
+    period: "2019",
+    bullets: [
+      "Development of a web application that handles and visualizes graphs from open data in CSV format, using Angular, NodeJS and MongoDB.",
+    ],
+  },
+];
 
 const Experience = () => (
-	<>
-		<section id="experience" className="max-w-screen-xl mx-auto px-6 py-16 scroll-mt-16 relative">
-			<h2 className="text-3xl lg:text-5xl font-bold mb-6 flex items-center gap-3">
-				<Briefcase className="w-8 h-8 text-[var(--foreground-accent)]" />
-				Experience
-			</h2>
-			<div className="space-y-6">
-		<div className="rounded-xl border border-[var(--foreground-accent)] p-6">
-			<div className="flex items-baseline justify-between">
-				<h3 className="text-2xl lg:text-3xl font-semibold">T.A.S. s.p.a</h3>
-				<span className="text-base opacity-75">2024 — Present · Remote</span>
-			</div>
-			<div className="mt-4 grid gap-4">
-				<div className="rounded-lg border border-[var(--foreground-accent)] p-4">
-					<div className="flex items-baseline justify-between">
-						<h4 className="text-xl lg:text-2xl font-semibold">Software Engineer</h4>
-						<span className="text-sm opacity-75">2024 — Present</span>
-					</div>
-					<ul className="mt-2 list-disc pl-6 text-base lg:text-lg">
-						<li>Senior Java EE developer in a SCRUM team (multi-team environment).</li>
-						<li>Financial apps for Instant Payments; maintenance of shared libraries.</li>
-						<li>Spring Boot, Spring Batch, MQs, Apache Kafka, Docker, Kubernetes, Helm, GitLab CI/CD.</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div className="rounded-xl border border-[var(--foreground-accent)] p-6">
-			<div className="flex items-baseline justify-between">
-				<h3 className="text-2xl lg:text-3xl font-semibold">Technology Reply</h3>
-				<span className="text-base opacity-75">2019 — 2024</span>
-			</div>
-			<div className="mt-4 grid gap-4">
-				<div className="rounded-lg bg-[color-mix(in_hsl,_var(--foreground)_20%,_transparent)]/10 p-4">
-					<div className="flex items-baseline justify-between">
-						<h4 className="text-xl lg:text-2xl font-semibold">Java Developer, Team Leader</h4>
-						<span className="text-sm opacity-75">2022 — 2024</span>
-					</div>
-					<ul className="mt-2 list-disc pl-6 text-base lg:text-lg">
-						<li>Led a team of 4; analysis and data model design.</li>
-						<li>Stakeholder meetings, testbook definition, support to UATs.</li>
-					<li>Deployments, maintenance, ticket lifecycle management.</li>
-				</ul>
-			</div>
-			<div className="rounded-lg border border-[var(--foreground-accent)] p-4">
-				<div className="flex items-baseline justify-between">
-					<h4 className="text-xl lg:text-2xl font-semibold">Analyst Java Developer</h4>
-					<span className="text-sm opacity-75">2021 — 2022</span>
-				</div>
-				<ul className="mt-2 list-disc pl-6 text-base lg:text-lg">
-					<li>Designed data models based on business requirements.</li>
-					<li>Improved stability, reducing incident tickets by 15%.</li>
-				</ul>
-			</div>
-			<div className="rounded-lg border border-[var(--foreground-accent)] p-4">
-				<div className="flex items-baseline justify-between">
-					<h4 className="text-xl lg:text-2xl font-semibold">Java Developer</h4>
-					<span className="text-sm opacity-75">2019 — 2021</span>
-				</div>
-				<ul className="mt-2 list-disc pl-6 text-base lg:text-lg">
-					<li>Developed and maintained PLM software for a major Italian fashion company.</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div className="rounded-xl border border-[var(--foreground-accent)] p-6">
-		<div className="flex items-baseline justify-between">
-			<h3 className="text-2xl lg:text-3xl font-semibold">University Internship · Ca’ Foscari University of Venice</h3>
-			<span className="text-base opacity-75">2019</span>
-		</div>
-		<ul className="mt-3 list-disc pl-6 text-lg">
-			<li>Web app to handle and visualize graphs from CSV open data using Angular, NodeJS, MongoDB.</li>
-		</ul>
-	</div>
+  <section id="experience" className="container-page section-pad">
+    <SectionHeading icon={Briefcase} eyebrow="Experience" title="Where I've worked" />
 
-			</div>
-		</section>
-	</>
+    <div className="relative ml-2 border-l-2 border-border">
+      {experience.map((item, i) => (
+        <Reveal key={`${item.company}-${item.period}`} delay={i * 0.06} className="relative pl-8 pb-8 last:pb-0">
+          <span className="absolute left-0 top-2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-background" />
+          <div className="card card-hover p-6">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <h3 className="text-xl font-semibold text-foreground">{item.role}</h3>
+                <div className="mt-1 flex items-center gap-1.5 text-sm text-muted">
+                  <Building2 className="w-3.5 h-3.5" />
+                  {item.company}
+                  {item.meta && <span className="text-primary">&middot; {item.meta}</span>}
+                </div>
+              </div>
+              <span className="tag-chip !py-1 !text-xs shrink-0">{item.period}</span>
+            </div>
+            <ul className="mt-4 space-y-2">
+              {item.bullets.map((b) => (
+                <li key={b} className="flex gap-2.5 text-[15px] leading-relaxed text-foreground/85">
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+      ))}
+    </div>
+  </section>
 );
 
 export default Experience;
-
-

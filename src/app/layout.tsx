@@ -19,8 +19,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Davide Volpe",
-  description: "davidevolpe.dev",
+  title: "Davide Volpe — Software Engineer",
+  description: "Software Engineer specialized in backend systems, Java & Spring Boot, distributed applications and cloud-native infrastructure.",
   robots: "noindex, nofollow",
   icons: "/favicon.ico"
 };
