@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, Sun, Moon, Download } from "lucide-react";
 
@@ -77,8 +78,8 @@ const Navbar = () => {
       >
         <div className="container-page flex items-center justify-between py-4">
           <a href="#home" className="flex items-center gap-3 group">
-            <span className="flex items-center justify-center w-9 h-9 rounded-xl text-white font-bold text-sm bg-gradient-to-br from-primary to-accent shadow-glow transition-transform duration-300 group-hover:scale-105">
-              DV
+            <span className="icon-tile relative w-11 h-11 transition-transform duration-300 group-hover:scale-105">
+              <Image src="/images/fox-mark.png" alt="" fill sizes="44px" className="object-contain p-1.5" />
             </span>
             <span className="text-xl font-semibold whitespace-nowrap text-foreground">
               Davide Volpe

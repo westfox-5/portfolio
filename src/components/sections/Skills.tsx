@@ -1,8 +1,10 @@
 "use client"
 
-import { BadgeCheck, Code2, Database, LayoutTemplate, Server, Award } from "lucide-react";
+import { BadgeCheck, Code2, Database, LayoutTemplate, Server, Award, Sparkles } from "lucide-react";
 import SectionHeading from "../SectionHeading";
 import Reveal from "../Reveal";
+import SkillRadar from "../SkillRadar";
+import GithubStats from "../GithubStats";
 
 const skillGroups = [
   {
@@ -18,12 +20,17 @@ const skillGroups = [
   {
     icon: Database,
     title: "Messaging & Data",
-    skills: ["Apache Kafka", "Message Queues", "Oracle", "MongoDB"],
+    skills: ["Apache Kafka", "Message Queues", "Oracle", "PostgreSQL", "MongoDB"],
   },
   {
     icon: LayoutTemplate,
     title: "Frontend & Architecture",
     skills: ["Angular", "React", "Next.js", "System architecture"],
+  },
+  {
+    icon: Sparkles,
+    title: "AI & Developer Tools",
+    skills: ["Claude Code / AI pair programming", "Prompt engineering", "LLM API integration", "AI-assisted code review"],
   },
 ];
 
@@ -35,7 +42,13 @@ const Skills = () => (
 
     <div className="grid sm:grid-cols-2 gap-5">
       {skillGroups.map(({ icon: Icon, title, skills }, i) => (
-        <Reveal key={title} delay={i * 0.06} className="card card-hover p-6">
+        <Reveal
+          key={title}
+          delay={i * 0.06}
+          className={`card card-hover p-6 ${
+            i === skillGroups.length - 1 && skillGroups.length % 2 === 1 ? "sm:col-span-2" : ""
+          }`}
+        >
           <div className="flex items-center gap-3 mb-4">
             <span className="icon-tile w-10 h-10">
               <Icon className="w-5 h-5" />
@@ -53,7 +66,16 @@ const Skills = () => (
       ))}
     </div>
 
-    <Reveal delay={0.28} className="mt-6 card p-6 flex flex-col md:flex-row md:items-center gap-6">
+    <div className="mt-5 grid md:grid-cols-2 gap-5">
+      <Reveal delay={0.24} className="h-full">
+        <SkillRadar />
+      </Reveal>
+      <Reveal delay={0.3} className="h-full">
+        <GithubStats />
+      </Reveal>
+    </div>
+
+    <Reveal delay={0.36} className="mt-6 card p-6 flex flex-col md:flex-row md:items-center gap-6">
       <div className="flex-1">
         <h3 className="text-sm font-semibold uppercase tracking-wider text-muted mb-3">Soft skills</h3>
         <div className="flex flex-wrap gap-2">
