@@ -5,14 +5,15 @@ import { ArrowRight, ChevronDown, Download, Github, Mail } from "lucide-react";
 import Separator from "../components/Separator";
 import Reveal from "../components/Reveal";
 import Footer from "../components/Footer";
+import About from "../components/sections/About";
+import Skills from "../components/sections/Skills";
+import Projects from "../components/sections/Projects";
+import Experience from "../components/sections/Experience";
+import Education from "../components/sections/Education";
+import Contact from "../components/sections/Contact";
 
+// Navbar reads localStorage for its initial theme, so it stays client-only.
 const Navbar = dynamic(() => import("../components/Navbar"), { ssr: false });
-const About = dynamic(() => import("../components/sections/About"), { ssr: false });
-const Skills = dynamic(() => import("../components/sections/Skills"), { ssr: false });
-const Projects = dynamic(() => import("../components/sections/Projects"), { ssr: false });
-const Experience = dynamic(() => import("../components/sections/Experience"), { ssr: false });
-const Education = dynamic(() => import("../components/sections/Education"), { ssr: false });
-const Contact = dynamic(() => import("../components/sections/Contact"), { ssr: false });
 
 const Home = () => {
 
